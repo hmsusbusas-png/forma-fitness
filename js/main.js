@@ -102,17 +102,36 @@ function renderDay(day) {
   `).join('');
 }
 
-$$('#schedule-tabs .tab').forEach((tab) =>
-  tab.addEventListener('click', () => {
-    $$('#schedule-tabs .tab').forEach((t) => {
-      t.classList.remove('is-active');
-      t.setAttribute('aria-selected', 'false');
-    });
-    tab.classList.add('is-active');
-    tab.setAttribute('aria-selected', 'true');
-    renderDay(tab.dataset.day);
-  })
-);
+const dayTabs = $$('#schedule-tabs .tab');
+
+/* roving tabindex: активный день в tab-порядке, остальные — стрелками */
+function activateDay(tab, moveFocus) {
+  dayTabs.forEach((t) => {
+    const active = t === tab;
+    t.classList.toggle('is-active', active);
+    t.setAttribute('aria-selected', String(active));
+    t.setAttribute('tabindex', active ? '0' : '-1');
+  });
+  if (moveFocus) tab.focus();
+  renderDay(tab.dataset.day);
+}
+
+dayTabs.forEach((tab, idx) => {
+  tab.addEventListener('click', () => activateDay(tab, false));
+  tab.addEventListener('keydown', (e) => {
+    let next = null;
+    if (e.key === 'ArrowRight') next = dayTabs[(idx + 1) % dayTabs.length];
+    else if (e.key === 'ArrowLeft') next = dayTabs[(idx - 1 + dayTabs.length) % dayTabs.length];
+    else if (e.key === 'Home') next = dayTabs[0];
+    else if (e.key === 'End') next = dayTabs[dayTabs.length - 1];
+    if (next) {
+      e.preventDefault();
+      activateDay(next, true);
+    }
+  });
+});
+
+dayTabs.forEach((t, i) => t.setAttribute('tabindex', i === 0 ? '0' : '-1'));
 
 renderDay('mon');
 
@@ -166,6 +185,11 @@ function setError(input, message) {
   const field = input.closest('.field');
   const error = $(`[data-error-for="${input.id}"]`);
   field.classList.toggle('is-invalid', Boolean(message));
+  if (message) {
+    input.setAttribute('aria-invalid', 'true');
+  } else {
+    input.removeAttribute('aria-invalid');
+  }
   if (error) error.textContent = message || '';
 }
 
