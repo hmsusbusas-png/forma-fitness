@@ -190,6 +190,9 @@ function validatePhone() {
   if (digits.startsWith('8') && digits.length === 11) {
     digits = '7' + digits.slice(1);
   }
+  if (digits.length === 10 && digits.startsWith('9')) {
+    digits = '7' + digits;
+  }
   const valid = digits.length === 11 && digits.startsWith('7');
   setError(input, valid ? '' : 'Введите телефон в формате +7 (999) 123-45-67');
   return valid;
