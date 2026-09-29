@@ -3,7 +3,6 @@
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-/* --- Мобильное меню --- */
 const nav = $('#nav');
 const burger = $('#burger');
 
@@ -20,7 +19,6 @@ $$('.nav__links a').forEach((link) =>
   })
 );
 
-/* --- Расписание --- */
 const SCHEDULE = {
   mon: [
     { time: '07:30', name: 'Сайкл-интенсив', trainer: 'Ольга Лапина', hall: 'Сайкл-студия', level: 'Средний' },
@@ -104,7 +102,6 @@ function renderDay(day) {
 
 const dayTabs = $$('#schedule-tabs .tab');
 
-/* roving tabindex: активный день в tab-порядке, остальные — стрелками */
 function activateDay(tab, moveFocus) {
   dayTabs.forEach((t) => {
     const active = t === tab;
@@ -135,7 +132,6 @@ dayTabs.forEach((t, i) => t.setAttribute('tabindex', i === 0 ? '0' : '-1'));
 
 renderDay('mon');
 
-/* --- Счётчики на скролле --- */
 function animateCounter(el) {
   const target = Number(el.dataset.target);
   const duration = 1400;
@@ -164,7 +160,6 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 $$('.stat__value').forEach((el) => counterObserver.observe(el));
 
-/* --- Reveal-анимации --- */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -179,7 +174,6 @@ $$('.reveal').forEach((el, i) => {
   revealObserver.observe(el);
 });
 
-/* --- Форма пробной тренировки --- */
 const form = $('#trial-form');
 const success = $('#trial-success');
 
@@ -238,7 +232,6 @@ function validateAgree() {
   return valid;
 }
 
-/* Маска телефона: +7 (999) 123-45-67 */
 $('#f-phone').addEventListener('input', (e) => {
   let digits = getDigits(e.target.value);
   if (digits.startsWith('8')) digits = '7' + digits.slice(1);
@@ -269,11 +262,9 @@ form.addEventListener('submit', (e) => {
   success.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
 
-/* Сброс ошибки при исправлении */
 $$('#trial-form input, #trial-form select').forEach((el) =>
   el.addEventListener('input', () => setError(el, ''))
 );
 $('#f-agree').addEventListener('change', () => setError($('#f-agree'), ''));
 
-/* --- Год в футере --- */
 $('#year').textContent = new Date().getFullYear();
