@@ -1,53 +1,53 @@
-# FORMA — Fitness Club Network Landing Page
+# ФОРМА — лендинг сети фитнес-клубов
 
-Marketing landing page for **FORMA**, a fictional network of three fitness clubs in Moscow. Built with vanilla HTML, CSS and JavaScript — no frameworks, no build step.
+Одностраничный сайт вымышленной сети фитнес-клубов «ФОРМА» — три клуба в Москве. Концепт для портфолио на ванильных HTML, CSS и JavaScript, без сборки. Тёмная энергичная тема с неоново-лаймовым акцентом и лёгкой зернистой SVG-текстурой.
 
-## Quick start
+![Скриншот главной страницы](screenshots/desktop.png)
 
-```bash
-git clone <repo-url>
+## Что внутри
+
+- липкая навигация с блюром, на мобильных — бургер-меню;
+- hero с бегущей строкой «Первое занятие бесплатно»;
+- счётчики статистики заводятся при скролле через IntersectionObserver;
+- 6 карточек направлений с неоновой заливкой на hover и фото-заглушками с picsum.photos;
+- расписание на неделю: 7 табов по дням, рендерятся из JS-объекта (время, занятие, тренер, зал, уровень);
+- блок тренеров и тарифы с выделенным рекомендованным планом;
+- форма записи на пробную тренировку: маска телефона, валидация, inline-ошибки, success-состояние;
+- reveal-анимации на скролле, поддержка `prefers-reduced-motion`, SEO-мета, Open Graph, SVG-favicon.
+
+## Как посмотреть
+
+Открой `index.html` в браузере — сборка не нужна. Или запусти локальный сервер:
+
+```powershell
+# PowerShell
 cd forma-fitness
-# open index.html in a browser, or serve locally:
-npx serve .
+python -m http.server 8080
+# открой http://localhost:8080
 ```
 
-## Features
+## Честно об ограничениях
 
-- Dark energetic theme with neon lime accent and subtle SVG grain texture
-- Google Fonts: Oswald (display) + Manrope (body), full Cyrillic support
-- Sticky blurred navigation with mobile burger menu
-- Hero with animated marquee ("First workout is free")
-- Animated stat counters triggered on scroll (IntersectionObserver)
-- 6 activity cards with neon hover fill and placeholder photos
-- Weekly schedule: 7 day tabs rendered from a JS data object (time, class, trainer, hall, level)
-- Trainers, pricing tiers (featured plan highlighted)
-- Trial workout signup form: phone mask + validation, inline errors, success state
-- Reveal-on-scroll animations, `prefers-reduced-motion` support
-- Responsive layout (desktop / tablet / mobile)
-- SEO meta tags, Open Graph, SVG favicon
+- Форма записи ничего не отправляет: маска, проверки и success-сообщение работают только на клиенте.
+- Фото залов и тренеров — заглушки с picsum.photos, без интернета вместо них пустые блоки.
+- Названия клубов, цены и расписание — демонстрационные, придуманы для макета.
 
-## Screenshots
-
-- `screenshots/desktop.png` — desktop view
-- `screenshots/mobile.png` — mobile view
-
-## Project structure
+## Структура файлов
 
 ```
 forma-fitness/
-├── index.html        # single-page markup
-├── css/style.css     # theme, layout, responsive styles
-├── js/main.js        # schedule tabs, counters, form validation
+├── index.html        # разметка одностраничника
+├── css/style.css     # тема, сетка, адаптив
+├── js/main.js        # табы расписания, счётчики, валидация формы
 ├── favicon.svg
+├── screenshots/      # desktop.png, mobile.png
 └── README.md
 ```
 
----
+## Стек
 
-## RU: ФОРМА — лендинг сети фитнес-клубов
+HTML5, CSS (custom properties, grid), ванильный JavaScript; шрифты Oswald и Manrope с Google Fonts, полная кириллица.
 
-Одностраничный сайт сети фитнес-клубов «ФОРМА» (Москва, 3 клуба). Ванильные HTML/CSS/JS, без сборки.
+## English summary
 
-**Быстрый старт:** откройте `index.html` в браузере или выполните `npx serve .`
-
-**Возможности:** тёмная неоновая тема с зернистой текстурой, бегущая строка, счётчики на скролле, направления с hover-заливкой, расписание с табами по дням недели, тарифы, форма записи с маской телефона и валидацией, адаптив, SEO и Open Graph.
+Landing for FORMA, a fictional network of three fitness clubs in Moscow. Dark neon theme, portfolio concept in vanilla HTML/CSS/JS, no build step. Weekly schedule tabs rendered from a JS data object, scroll counters, trainers, pricing tiers, trial signup form with phone mask. Photos are picsum placeholders; the form is client-side only.
