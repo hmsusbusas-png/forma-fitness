@@ -12,7 +12,8 @@
   <meta property="og:title" content="ФОРМА — сеть фитнес-клубов в Москве">
   <meta property="og:description" content="Тренажёрный зал, бассейн, единоборства и 40 групповых программ. Первая тренировка бесплатно.">
   <meta property="og:url" content="https://hmsusbusas-png.github.io/forma-fitness/">
-  <meta property="og:image" content="https://picsum.photos/seed/forma-og/1200/630">
+  <meta property="og:image" content="https://hmsusbusas-png.github.io/forma-fitness/screenshots/desktop.png">
+  <meta property="og:image:alt" content="ФОРМА fitness club landing page concept">
   <meta property="og:locale" content="ru_RU">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -36,7 +37,7 @@
         <a class="btn btn--primary btn--sm nav__cta-mobile" href="#trial">Пробная тренировка</a>
       </nav>
       <a class="btn btn--primary btn--sm nav__cta" href="#trial">Пробная тренировка</a>
-      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">
+      <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span>
       </button>
     </div>
@@ -166,13 +167,13 @@
           <h2>Занятия на неделю</h2>
         </div>
         <div class="tabs reveal" id="schedule-tabs" role="tablist" aria-label="Дни недели">
-          <button class="tab is-active" data-day="mon" role="tab" aria-selected="true">Пн</button>
-          <button class="tab" data-day="tue" role="tab" aria-selected="false">Вт</button>
-          <button class="tab" data-day="wed" role="tab" aria-selected="false">Ср</button>
-          <button class="tab" data-day="thu" role="tab" aria-selected="false">Чт</button>
-          <button class="tab" data-day="fri" role="tab" aria-selected="false">Пт</button>
-          <button class="tab" data-day="sat" role="tab" aria-selected="false">Сб</button>
-          <button class="tab" data-day="sun" role="tab" aria-selected="false">Вс</button>
+          <button class="tab is-active" id="tab-mon" data-day="mon" role="tab" aria-selected="true" aria-controls="schedule-grid">Пн</button>
+          <button class="tab" id="tab-tue" data-day="tue" role="tab" aria-selected="false" aria-controls="schedule-grid">Вт</button>
+          <button class="tab" data-day="wed" role="tab" aria-selected="false" aria-controls="schedule-grid">Ср</button>
+          <button class="tab" data-day="thu" role="tab" aria-selected="false" aria-controls="schedule-grid">Чт</button>
+          <button class="tab" data-day="fri" role="tab" aria-selected="false" aria-controls="schedule-grid">Пт</button>
+          <button class="tab" data-day="sat" role="tab" aria-selected="false" aria-controls="schedule-grid">Сб</button>
+          <button class="tab" data-day="sun" role="tab" aria-selected="false" aria-controls="schedule-grid">Вс</button>
         </div>
         <div class="schedule reveal" id="schedule-grid" role="tabpanel"></div>
       </div>
@@ -308,7 +309,7 @@
         </form>
         <div class="trial-success" id="trial-success" role="status" hidden>
           <h3>Заявка принята</h3>
-          <p>Администратор перезвонит в течение 15 минут в рабочее время и подтвердит запись. До встречи в ФОРМЕ.</p>
+          <p>Это демонстрационная форма. Данные никуда не отправляются, а запись не создаётся.</p>
         </div>
       </div>
     </section>
@@ -323,9 +324,9 @@
           <a class="logo" href="#top">ФОРМА<span class="logo__dot">.</span></a>
           <p>Сеть фитнес-клубов в Москве. Тренируемся с 2013 года.</p>
           <div class="footer__social">
-            <a href="https://t.me/formafitness" rel="noopener">Telegram</a>
-            <a href="https://vk.com/formafitness" rel="noopener">VK</a>
-            <a href="https://www.youtube.com/@formafitness" rel="noopener">YouTube</a>
+            <span>Telegram (макет)</span>
+            <span>VK (макет)</span>
+            <span>YouTube (макет)</span>
           </div>
         </div>
         <div class="footer__club">

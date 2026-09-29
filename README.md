@@ -28,8 +28,8 @@ npx serve .
 
 ## Screenshots
 
-- `screenshots/desktop.png` — desktop view (coming soon)
-- `screenshots/mobile.png` — mobile view (coming soon)
+- `screenshots/desktop.png` — desktop view
+- `screenshots/mobile.png` — mobile view
 
 ## Project structure
 

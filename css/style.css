@@ -28,6 +28,8 @@ body {
   overflow-x: hidden;
 }
 
+::selection { background: var(--lime); color: var(--bg); }
+
 /* Зернистая текстура поверх всего */
 body::after {
   content: "";
@@ -170,7 +172,7 @@ section { scroll-margin-top: calc(var(--nav-h) + 12px); }
   font-family: var(--font-display);
   font-size: clamp(3rem, 9.5vw, 7.5rem);
   font-weight: 700;
-  line-height: 0.95;
+  line-height: 1.05;
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
@@ -277,7 +279,7 @@ section { scroll-margin-top: calc(var(--nav-h) + 12px); }
   font-size: clamp(2rem, 4.5vw, 3.2rem);
   font-weight: 700;
   text-transform: uppercase;
-  line-height: 1.05;
+  line-height: 1.15;
 }
 .section-head__sub {
   margin-top: 16px;
@@ -481,6 +483,11 @@ section { scroll-margin-top: calc(var(--nav-h) + 12px); }
 .price-card--featured {
   border-color: var(--lime);
   box-shadow: 0 0 40px rgba(200, 255, 46, 0.12);
+  animation: featured-glow 3s ease-in-out infinite;
+}
+@keyframes featured-glow {
+  0%, 100% { box-shadow: 0 0 40px rgba(200, 255, 46, 0.12); }
+  50% { box-shadow: 0 0 30px rgba(200, 255, 46, 0.28); }
 }
 .price-card__badge {
   position: absolute;
@@ -674,6 +681,7 @@ section { scroll-margin-top: calc(var(--nav-h) + 12px); }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .marquee__track { animation: none; }
+  .price-card--featured { animation: none; }
   html { scroll-behavior: auto; }
 }
 

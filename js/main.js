@@ -88,7 +88,7 @@ const scheduleGrid = $('#schedule-grid');
 function renderDay(day) {
   const classes = SCHEDULE[day] || [];
   if (!classes.length) {
-    scheduleGrid.innerHTML = '<p class="schedule__empty">В этот день групповых занятий нет — зал свободен для индивидуальных тренировок.</p>';
+    scheduleGrid.innerHTML = '<p class="schedule__empty">В этот день групповых занятий нет. Зал свободен для индивидуальных тренировок.</p>';
     return;
   }
   scheduleGrid.innerHTML = classes.map((c) => `
@@ -151,10 +151,12 @@ function animateCounter(el) {
   requestAnimationFrame(tick);
 }
 
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      animateCounter(entry.target);
+      if (reduceMotion) entry.target.textContent = Number(entry.target.dataset.target).toLocaleString('ru-RU');
+      else animateCounter(entry.target);
       counterObserver.unobserve(entry.target);
     }
   });
@@ -197,7 +199,7 @@ function validateName() {
   const input = $('#f-name');
   const value = input.value.trim();
   if (value.length < 2) {
-    setError(input, 'Укажите имя — минимум 2 символа');
+    setError(input, 'Укажите имя: минимум 2 символа');
     return false;
   }
   setError(input, '');
